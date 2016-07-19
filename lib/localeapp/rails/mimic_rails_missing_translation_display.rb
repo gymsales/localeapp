@@ -6,18 +6,18 @@
 module Localeapp
   module MimicRailsMissingTranslationDisplay
 
-    def self.included(o)
-      o.instance_eval do
-
-        alias :old_rails_call :call
-        def call(exception, locale, key, options)
-          locale, key = old_rails_call(exception, locale, key, options).split(', ')
-          keys = I18n.normalize_keys(locale, key, options[:scope])
-          "<span class=\"translation_missing localeapp\" title=\"translation missing: #{keys.join('.')}\">#{keys.last.to_s.titleize}</span>".html_safe
-        end
-
-      end
-    end
+    # def self.included(o)
+    #   o.instance_eval do
+    #
+    #     alias :old_rails_call :call
+    #     def call(exception, locale, key, options)
+    #       locale, key = old_rails_call(exception, locale, key, options).split(', ')
+    #       keys = I18n.normalize_keys(locale, key, options[:scope])
+    #       "<span class=\"translation_missing localeapp\" title=\"translation missing: #{keys.join('.')}\">#{keys.last.to_s.titleize}</span>".html_safe
+    #     end
+    #
+    #   end
+    # end
 
   end
 end
